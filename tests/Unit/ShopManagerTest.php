@@ -56,4 +56,21 @@ class ShopManagerTest extends TestCase
             'Jumia Product Sample #3',
         ], $products);
     }
+
+    public function test_cannot_mix_ebay_amazon_services()
+    {
+        $factory = app(ShopManagerInterface::class);
+
+        $service = $factory->make('ebay');
+
+        $products = $service->getProducts();
+
+        dump($products);
+
+        self::assertNotEquals([
+            'Amazon Product Sample #1',
+            'Ebay Product Sample #2',
+            'Ebay Product Sample #3',
+        ], $products);
+    }
 }
