@@ -13,6 +13,7 @@ class EbayShopService implements ShopServiceInterface
 
         dump($this->config);
     }
+
     public function getProducts(): array
     {
         return [
